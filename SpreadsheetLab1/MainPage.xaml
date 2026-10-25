@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpreadsheetLab1.MainPage"
+             Title="Лабораторна робота №1 — Варіант 50">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, *, Auto" Padding="12" RowSpacing="8">
+
+        <HorizontalStackLayout Grid.Row="0" Spacing="8">
+            <Button Text="💾 Зберегти" Clicked="OnSaveClicked" BackgroundColor="#2563EB" TextColor="White"/>
+            <Button Text="📂 Відкрити" Clicked="OnOpenClicked" BackgroundColor="#2563EB" TextColor="White"/>
+            <Button Text="🧹 Очистити" Clicked="OnClearClicked" BackgroundColor="#475569" TextColor="White"/>
+            <BoxView WidthRequest="2" Color="#CBD5E1" Margin="4,2"/>
+            <Button x:Name="ModeToggleButton" Text="Режим: ЗНАЧЕННЯ" Clicked="OnToggleModeClicked" BackgroundColor="#059669" TextColor="White" FontAttributes="Bold"/>
+            <HorizontalStackLayout Spacing="4" VerticalOptions="Center" Margin="8,0">
+                <CheckBox x:Name="StrictBoolCheckBox" CheckedChanged="OnStrictBoolChanged"/>
+                <Label Text="Логічний вигляд (TRUE/FALSE)" VerticalOptions="Center" FontSize="13"/>
+            </HorizontalStackLayout>
+            <BoxView WidthRequest="2" Color="#CBD5E1" Margin="4,2"/>
+            <Button Text="❓ Допомога" Clicked="OnHelpClicked" BackgroundColor="#7C3AED" TextColor="White"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="1" Spacing="8">
+            <Label Text="Розмірність:" VerticalOptions="Center" FontAttributes="Bold"/>
+            <Button Text="➕ Рядок" Clicked="OnAddRowClicked"/>
+            <Button Text="➖ Рядок" Clicked="OnRemoveRowClicked"/>
+            <Button Text="➕ Стовпчик" Clicked="OnAddColClicked"/>
+            <Button Text="➖ Стовпчик" Clicked="OnRemoveColClicked"/>
+            <Button Text="🧪 Завантажити демо Варіант 50" Clicked="OnLoadDemoClicked" BackgroundColor="#D97706" TextColor="White"/>
+        </HorizontalStackLayout>
+
+        <Grid Grid.Row="2" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="8">
+            <Border Grid.Column="0" Stroke="#94A3B8" StrokeThickness="1" Padding="12,6" BackgroundColor="#F1F5F9">
+                <Label x:Name="SelectedCellLabel" Text="A1" FontAttributes="Bold" FontSize="16" VerticalOptions="Center"/>
+            </Border>
+            <Entry x:Name="FormulaEntry" Grid.Column="1" Placeholder="Введіть вираз..." Completed="OnFormulaCompleted" FontSize="15"/>
+            <Button Grid.Column="2" Text="✔ Застосувати" Clicked="OnApplyFormulaClicked" BackgroundColor="#16A34A" TextColor="White" FontAttributes="Bold"/>
+        </Grid>
+
+        <ScrollView Grid.Row="3" Orientation="Both">
+            <Grid x:Name="SpreadsheetGrid" ColumnSpacing="1" RowSpacing="1" BackgroundColor="#CBD5E1" Padding="1"/>
+        </ScrollView>
+
+        <Border Grid.Row="4" Stroke="#94A3B8" BackgroundColor="#F8FAFC" Padding="10,6">
+            <Label x:Name="StatusLabel" Text="Готово до роботи." FontSize="14" TextColor="#1E293B"/>
+        </Border>
+
+    </Grid>
+</ContentPage>
